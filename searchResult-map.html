@@ -1,0 +1,950 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>搜尋結果 - 地圖模式</title>
+    <script type="module" crossorigin src="/uniGuide/assets/main-DcN1m0Xz.js"></script>
+    <link rel="stylesheet" crossorigin href="/uniGuide/assets/main-ucb-ydZj.css">
+  </head>
+  <body class="pt-[154px]">
+    <nav class="fixed left-0 top-0 z-50 w-full bg-white">
+      <div class="bg-white">
+  <!-- SearchInput -->
+  <div class="container">
+    <button
+      type="button"
+      class="flex w-full items-center gap-x-2 rounded-full px-5 py-4 font-semibold shadow-[0px_6px_12px_-4px_#0000001A]"
+      data-drawer-target="drawer-left-example"
+      data-drawer-show="drawer-left-example"
+      data-drawer-placement="left"
+      aria-controls="drawer-left-example"
+    >
+      <i class="bx bx-search-alt-2 text-2xl leading-6"></i>
+      Where to?
+    </button>
+
+    <div
+  id="drawer-left-example"
+  class="fixed left-0 top-0 z-10 h-screen w-full -translate-x-full overflow-y-auto bg-[#F5F6F6] pb-20 transition-transform"
+  tabindex="-1"
+  aria-labelledby="drawer-left-label"
+>
+  <div class="container relative space-y-4">
+    <button
+      type="button"
+      data-drawer-hide="drawer-left-example"
+      aria-controls="drawer-left-example"
+      class="flex items-center justify-center py-3"
+    >
+      <i class="bx bx-left-arrow-alt text-2xl leading-6"></i>
+      <span class="sr-only">Close menu</span>
+    </button>
+
+    <!-- Location Search -->
+    <div class="relative">
+      <button
+        type="button"
+        id="dropdownWhereButton"
+        data-dropdown-toggle="dropdown-where"
+        class="flex w-full items-center justify-between rounded-2xl bg-white px-5 py-4 shadow-[0px_6px_12px_-4px_#0000001A]"
+      >
+        <div class="flex gap-x-2">
+          <i class="bx bx-search-alt-2 text-2xl leading-6"></i>
+          <p>Where</p>
+        </div>
+        <p class="text-sm font-semibold">Current location</p>
+      </button>
+      <!-- Dropdown menu -->
+      <div
+        id="dropdown-where"
+        class="z-20 hidden w-full !-translate-y-0 space-y-3 divide-gray-100 rounded-[20px] bg-white shadow-[0px_12px_16px_-4px_#00000014]"
+      >
+        <div class="mx-2 mt-2 rounded-2xl border border-neutral-100">
+          <label
+            for="location-search"
+            class="sr-only text-sm font-medium text-gray-900"
+          >
+            location-search
+          </label>
+          <div class="flex items-center gap-x-2 rounded-xl px-4">
+            <i class="bx bx-search text-2xl leading-6"></i>
+            <input
+              type="search"
+              id="location-search"
+              class="w-full border-none bg-white px-0 py-2 placeholder:font-semibold placeholder:text-black focus:border-transparent focus:ring-transparent"
+              placeholder="Where to?"
+              required
+            />
+            <button class="close-dropdown h-[22px] w-5">
+              <i
+                class="bx bxs-x-circle text-xl leading-[22px] text-[#3C3C4399]"
+              ></i>
+            </button>
+          </div>
+        </div>
+        <div class="space-y-3 px-5 pb-4">
+          <div>
+            <p class="text-xs leading-5 text-neutral-400">Recent</p>
+            <ul class="space-y-1 text-sm" aria-labelledby="dropdownWhereButton">
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center gap-x-3 p-1 text-sm font-semibold"
+                >
+                  <i
+                    class="bx bx-time-five rounded-full bg-neutral-100 p-1 text-xl leading-6"
+                  ></i>
+                  Taiwan
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center gap-x-3 p-1 text-sm font-semibold"
+                >
+                  <i
+                    class="bx bx-time-five rounded-full bg-neutral-100 p-1 text-xl leading-6"
+                  ></i>
+                  Tokyo
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-xs leading-5 text-neutral-400">Popular</p>
+            <ul
+              class="space-y-1 text-sm"
+              aria-labelledby="dropdownDefaultButton"
+            >
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center gap-x-3 p-1 text-sm font-semibold"
+                >
+                  <i
+                    class="bx bx-time-five rounded-full bg-neutral-100 p-1 text-xl leading-6"
+                  ></i>
+                  Bangkok
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center gap-x-3 p-1 text-sm font-semibold"
+                >
+                  <i
+                    class="bx bx-time-five rounded-full bg-neutral-100 p-1 text-xl leading-6"
+                  ></i>
+                  Canada
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="flex items-center gap-x-3 p-1 text-sm font-semibold"
+                >
+                  <i
+                    class="bx bx-time-five rounded-full bg-neutral-100 p-1 text-xl leading-6"
+                  ></i>
+                  Eroupe
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Datepicker -->
+    <div>
+      <button
+        type="button"
+        id="dropdown-when"
+        class="flex w-full items-center justify-between rounded-2xl bg-white px-5 py-4 !text-black shadow-[0px_6px_12px_-4px_#0000001A]"
+      >
+        <div class="flex gap-x-2">
+          <i class="bx bx-calendar text-2xl leading-6"></i>
+          <p class="datepicker-title">When</p>
+        </div>
+        <p class="datepicker-selected text-sm font-semibold">From tomorrow</p>
+      </button>
+      <div
+  id="datepicker"
+  class="h-0 overflow-hidden rounded-b-2xl bg-white duration-300 ease-in-out"
+>
+  <div class="px-3 py-4">
+    <div class="mb-6 flex items-center justify-between">
+      <p class="ps-2 text-sm font-semibold">August 2024</p>
+      <div class="space-x-2 text-2xl leading-6">
+        <a href="#">
+          <i class="bx bx-chevron-left text-[#E6E7E7]"></i>
+        </a>
+        <a href="#"><i class="bx bx-chevron-right text-[#6A706F]"></i></a>
+      </div>
+    </div>
+    <div id="calendar"></div>
+  </div>
+</div>
+    </div>
+
+    <!-- Members Selector -->
+    <div>
+      <button
+        type="button"
+        id="accordion-who"
+        class="flex w-full items-center justify-between rounded-2xl bg-white px-5 py-4 !text-black shadow-[0px_6px_12px_-4px_#0000001A]"
+      >
+        <div class="flex gap-x-2">
+          <i class="bx bx-user-pin text-2xl leading-6"></i>
+          <p class="member-title">Who</p>
+        </div>
+        <p class="member-selected text-sm font-semibold">Only me</p>
+      </button>
+      <div
+        id="member"
+        class="h-0 overflow-hidden rounded-b-2xl bg-white duration-300 ease-in-out"
+      >
+        <div class="py-4">
+          <div class="flex items-center justify-between px-4 py-2">
+            <div>
+              <p>Adult</p>
+              <p class="text-xs text-[#6A706F]">Age 13 or above</p>
+            </div>
+            <div class="flex items-center">
+              <a href="#">
+                <i class="bx bx-minus size-[32px] p-2 text-[#E6E7E7]"></i>
+              </a>
+              <span class="p-1">1</span>
+              <a href="#">
+                <i class="bx bx-plus size-[32px] p-2 text-[#6A706F]"></i>
+              </a>
+            </div>
+          </div>
+          <div class="flex items-center justify-between px-4 py-2">
+            <div>
+              <p>Child</p>
+              <p class="text-xs text-[#6A706F]">2-12 years old</p>
+            </div>
+            <div class="flex items-center">
+              <a href="#">
+                <i class="bx bx-minus size-[32px] p-2 text-[#E6E7E7]"></i>
+              </a>
+              <span class="p-1">0</span>
+              <a href="#">
+                <i class="bx bx-plus size-[32px] p-2 text-[#6A706F]"></i>
+              </a>
+            </div>
+          </div>
+          <div class="flex items-center justify-between px-4 py-2">
+            <div>
+              <p>Toddler</p>
+              <p class="text-xs text-[#6A706F]">Under 2 years old</p>
+            </div>
+            <div class="flex items-center">
+              <a href="#">
+                <i class="bx bx-minus size-[32px] p-2 text-[#E6E7E7]"></i>
+              </a>
+              <span class="p-1">0</span>
+              <a href="#">
+                <i class="bx bx-plus size-[32px] p-2 text-[#6A706F]"></i>
+              </a>
+            </div>
+          </div>
+          <div class="flex items-center justify-between px-4 py-2">
+            <div>
+              <p>Pet</p>
+            </div>
+            <div class="flex items-center">
+              <a href="#">
+                <i class="bx bx-minus size-[32px] p-2 text-[#E6E7E7]"></i>
+              </a>
+              <span class="p-1">0</span>
+              <a href="#">
+                <i class="bx bx-plus size-[32px] p-2 text-[#6A706F]"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Button -->
+    <a
+      href="./searchResult-map.html"
+      class="fixed bottom-4 left-1/2 flex w-[327px] -translate-x-1/2 items-center justify-center rounded-lg bg-brand-300 py-3 font-semibold"
+    >
+      <i class="bx bx-search-alt-2 me-2 text-2xl leading-6"></i>
+      Search
+    </a>
+  </div>
+</div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="my-2 border-b border-neutral-100 text-center font-semibold">
+    <ul class="container -mb-px flex px-0">
+      <li class="relative w-full">
+        <a
+          href="#"
+          class="active inline-block border-b-2 border-transparent py-2 after:absolute after:bottom-0 after:left-1/2 after:h-[3px] after:w-12 after:-translate-x-1/2 after:rounded-full after:bg-black"
+        >
+          Tour
+        </a>
+      </li>
+      <li class="relative w-full">
+        <a
+          href="#"
+          class="inline-block border-b-2 border-transparent py-2 after:absolute after:bottom-0 after:left-1/2 after:hidden after:h-[3px] after:w-12 after:-translate-x-1/2 after:rounded-full after:bg-black hover:after:block"
+          aria-current="page"
+        >
+          Meet-up
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+ <!-- 篩選按鈕 -->
+<div class="container bg-white overflow-x-scroll py-2">
+  <ul class="flex items-center gap-2 whitespace-nowrap">
+    <li>
+      <a href="#">
+        <i
+          class="bx bx-slider-alt bx-xs bx-border-circle dark:focus:ring-brand-60 border-neutral-300 p-2 hover:border-brand-600 hover:bg-brand-50 hover:text-brand-700 focus:border-brand-600 focus:bg-brand-50 focus:text-brand-700 focus:outline-none active:border-brand-600 dark:bg-brand-400 dark:hover:bg-brand-500"
+        ></i>
+      </a>
+    </li>
+    <!-- Languages -->
+    <li>
+      <!-- Languages button -->
+      <button
+        id="dropdownBgHoverButton1"
+        data-dropdown-toggle="dropdownBgHover1"
+        class="dark:focus:ring-brand-60 inline-flex items-baseline rounded-full border border-brand-600 bg-brand-50 px-4 py-1.5 text-center text-sm font-medium text-brand-700 focus:border-brand-600 focus:bg-brand-50 focus:text-brand-700 focus:outline-none active:border-brand-600 dark:bg-brand-400 dark:hover:bg-brand-500"
+        type="button"
+      >
+        Language
+        <span class="ms-2">(2)</span>
+      </button>
+      <!-- Languages Dropdown menu -->
+      <div
+        id="dropdownBgHover1"
+        class="z-10 hidden w-48 rounded-lg bg-white shadow dark:bg-gray-700"
+      >
+        <ul
+          class="space-y-1 p-3 text-base text-gray-700 dark:text-gray-200"
+          aria-labelledby="dropdownBgHoverButton1"
+        >
+          <li>
+            <div
+              class="flex items-center rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                checked
+                id="checkbox-item-1-1"
+                type="checkbox"
+                value=""
+                class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-neutral-950 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700"
+              />
+              <label
+                for="checkbox-item-1-1"
+                class="ms-2 w-full rounded text-base font-medium text-gray-900 dark:text-gray-300"
+              >
+                English
+              </label>
+            </div>
+          </li>
+          <li>
+            <div
+              class="flex items-center rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                checked
+                id="checkbox-item-1-2"
+                type="checkbox"
+                value=""
+                class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-neutral-950 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700"
+              />
+              <label
+                for="checkbox-item-1-2"
+                class="ms-2 w-full rounded text-base font-medium text-gray-900 dark:text-gray-300"
+              >
+                繁體中文
+              </label>
+            </div>
+          </li>
+          <li>
+            <div
+              class="flex items-center rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                id="checkbox-item-1-3"
+                type="checkbox"
+                value=""
+                class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-neutral-950 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700"
+              />
+              <label
+                for="checkbox-item-1-3"
+                class="ms-2 w-full rounded text-base font-medium text-gray-900 dark:text-gray-300"
+              >
+                Default checkbox
+              </label>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <!-- Activity  -->
+    <li>
+      <!-- Activity button -->
+      <button
+        id="dropdownBgHoverButton2"
+        data-dropdown-toggle="dropdownBgHover2"
+        class="dark:focus:ring-brand-60 inline-flex items-baseline rounded-full border border-neutral-300 px-4 py-1.5 text-center text-sm font-medium text-neutral-900 hover:border-brand-600 hover:bg-brand-50 hover:text-brand-700 focus:border-brand-600 focus:bg-brand-50 focus:text-brand-700 focus:outline-none active:border-brand-600 dark:bg-brand-400 dark:hover:bg-brand-500"
+        type="button"
+      >
+        Activity Types
+        <svg
+          class="ms-3 h-2.5 w-2.5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 10 6"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m1 1 4 4 4-4"
+          />
+        </svg>
+      </button>
+      <!-- Activity Dropdown menu -->
+      <div
+        id="dropdownBgHover2"
+        class="z-10 hidden w-48 rounded-lg bg-white shadow dark:bg-gray-700"
+      >
+        <ul
+          class="space-y-1 p-3 text-base text-gray-700 dark:text-gray-200"
+          aria-labelledby="dropdownBgHoverButton2"
+        >
+          <li>
+            <div
+              class="flex items-center rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                id="checkbox-item-2-1"
+                type="checkbox"
+                value=""
+                class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-neutral-950 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700"
+              />
+              <label
+                for="checkbox-item-2-1"
+                class="ms-2 w-full rounded text-base font-medium text-gray-900 dark:text-gray-300"
+              >
+                Type 1
+              </label>
+            </div>
+          </li>
+          <li>
+            <div
+              class="flex items-center rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                checked
+                id="checkbox-item-2-2"
+                type="checkbox"
+                value=""
+                class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-neutral-950 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700"
+              />
+              <label
+                for="checkbox-item-2-2"
+                class="ms-2 w-full rounded text-base font-medium text-gray-900 dark:text-gray-300"
+              >
+                Type 2
+              </label>
+            </div>
+          </li>
+          <li>
+            <div
+              class="flex items-center rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                id="checkbox-item-2-3"
+                type="checkbox"
+                value=""
+                class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-neutral-950 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700"
+              />
+              <label
+                for="checkbox-item-2-3"
+                class="ms-2 w-full rounded text-base font-medium text-gray-900 dark:text-gray-300"
+              >
+                Type 3
+              </label>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <!-- Price  -->
+    <li>
+      <!-- Price Button -->
+      <button
+        id="dropdownBgHoverButton3"
+        data-dropdown-toggle="dropdownBgHover3"
+        class="dark:focus:ring-brand-60 inline-flex items-baseline rounded-full border border-neutral-300 px-4 py-1.5 text-center text-sm font-medium text-neutral-900 hover:border-brand-600 hover:bg-brand-50 hover:text-brand-700 focus:border-brand-600 focus:bg-brand-50 focus:text-brand-700 focus:outline-none active:border-brand-600 dark:bg-brand-400 dark:hover:bg-brand-500"
+        type="button"
+      >
+        Price
+        <svg
+          class="ms-3 h-2.5 w-2.5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 10 6"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m1 1 4 4 4-4"
+          />
+        </svg>
+      </button>
+      <!-- Price Dropdown menu -->
+      <div
+        id="dropdownBgHover3"
+        class="z-10 hidden w-48 rounded-lg bg-white shadow dark:bg-gray-700"
+      >
+        <ul
+          class="space-y-1 p-3 text-base text-gray-700 dark:text-gray-200"
+          aria-labelledby="dropdownBgHoverButton3"
+        >
+          <li>
+            <div
+              class="flex items-center rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                id="checkbox-item-3-1"
+                type="checkbox"
+                value=""
+                class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-neutral-950 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700"
+              />
+              <label
+                for="checkbox-item-3-1"
+                class="ms-2 w-full rounded text-base font-medium text-gray-900 dark:text-gray-300"
+              >
+                Price 1
+              </label>
+            </div>
+          </li>
+          <li>
+            <div
+              class="flex items-center rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                checked
+                id="checkbox-item-3-2"
+                type="checkbox"
+                value=""
+                class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-neutral-950 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700"
+              />
+              <label
+                for="checkbox-item-3-2"
+                class="ms-2 w-full rounded text-base font-medium text-gray-900 dark:text-gray-300"
+              >
+                Price 2
+              </label>
+            </div>
+          </li>
+          <li>
+            <div
+              class="flex items-center rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                id="checkbox-item-3-3"
+                type="checkbox"
+                value=""
+                class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-neutral-950 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700"
+              />
+              <label
+                for="checkbox-item-3-3"
+                class="ms-2 w-full rounded text-base font-medium text-gray-900 dark:text-gray-300"
+              >
+                Price 3
+              </label>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <!-- 其他篩選 4  -->
+    <li>
+      <!-- 其他篩選 4 Button -->
+      <button
+        id="dropdownBgHoverButton4"
+        data-dropdown-toggle="dropdownBgHover4"
+        class="dark:focus:ring-brand-60 inline-flex items-baseline rounded-full border border-neutral-300 px-4 py-1.5 text-center text-sm font-medium text-neutral-900 hover:border-brand-600 hover:bg-brand-50 hover:text-brand-700 focus:border-brand-600 focus:bg-brand-50 focus:text-brand-700 focus:outline-none active:border-brand-600 dark:bg-brand-400 dark:hover:bg-brand-500"
+        type="button"
+      >
+        其他篩選 4
+        <svg
+          class="ms-3 h-2.5 w-2.5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 10 6"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m1 1 4 4 4-4"
+          />
+        </svg>
+      </button>
+      <!-- 其他篩選 4 Dropdown menu -->
+      <div
+        id="dropdownBgHover4"
+        class="z-10 hidden w-48 rounded-lg bg-white shadow dark:bg-gray-700"
+      >
+        <ul
+          class="space-y-1 p-3 text-base text-gray-700 dark:text-gray-200"
+          aria-labelledby="dropdownBgHoverButton4"
+        >
+          <li>
+            <div
+              class="flex items-center rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                id="checkbox-item-4-1"
+                type="checkbox"
+                value=""
+                class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-neutral-950 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700"
+              />
+              <label
+                for="checkbox-item-4-1"
+                class="ms-2 w-full rounded text-base font-medium text-gray-900 dark:text-gray-300"
+              >
+                其他篩選 4-1
+              </label>
+            </div>
+          </li>
+          <li>
+            <div
+              class="flex items-center rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                checked
+                id="checkbox-item-4-2"
+                type="checkbox"
+                value=""
+                class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-neutral-950 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700"
+              />
+              <label
+                for="checkbox-item-4-2"
+                class="ms-2 w-full rounded text-base font-medium text-gray-900 dark:text-gray-300"
+              >
+                其他篩選 4-2
+              </label>
+            </div>
+          </li>
+          <li>
+            <div
+              class="flex items-center rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                id="checkbox-item-4-3"
+                type="checkbox"
+                value=""
+                class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-neutral-950 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700"
+              />
+              <label
+                for="checkbox-item-4-3"
+                class="ms-2 w-full rounded text-base font-medium text-gray-900 dark:text-gray-300"
+              >
+                其他篩選 4-3
+              </label>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <!-- 其他篩選 5  -->
+    <li>
+      <!-- 其他篩選 5 Button -->
+      <button
+        id="dropdownBgHoverButton5"
+        data-dropdown-toggle="dropdownBgHover5"
+        class="dark:focus:ring-brand-60 inline-flex items-baseline rounded-full border border-neutral-300 px-4 py-1.5 text-center text-sm font-medium text-neutral-900 hover:border-brand-600 hover:bg-brand-50 hover:text-brand-700 focus:border-brand-600 focus:bg-brand-50 focus:text-brand-700 focus:outline-none active:border-brand-600 dark:bg-brand-400 dark:hover:bg-brand-500"
+        type="button"
+      >
+        其他篩選 5
+        <svg
+          class="ms-3 h-2.5 w-2.5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 10 6"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m1 1 4 4 4-4"
+          />
+        </svg>
+      </button>
+      <!-- 其他篩選 5 Dropdown menu -->
+      <div
+        id="dropdownBgHover5"
+        class="z-10 hidden w-48 rounded-lg bg-white shadow dark:bg-gray-700"
+      >
+        <ul
+          class="space-y-1 p-3 text-base text-gray-700 dark:text-gray-200"
+          aria-labelledby="dropdownBgHoverButton4"
+        >
+          <li>
+            <div
+              class="flex items-center rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                id="checkbox-item-5-1"
+                type="checkbox"
+                value=""
+                class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-neutral-950 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700"
+              />
+              <label
+                for="checkbox-item-5-1"
+                class="ms-2 w-full rounded text-base font-medium text-gray-900 dark:text-gray-300"
+              >
+                其他篩選 5-1
+              </label>
+            </div>
+          </li>
+          <li>
+            <div
+              class="flex items-center rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                checked
+                id="checkbox-item-5-2"
+                type="checkbox"
+                value=""
+                class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-neutral-950 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700"
+              />
+              <label
+                for="checkbox-item-5-2"
+                class="ms-2 w-full rounded text-base font-medium text-gray-900 dark:text-gray-300"
+              >
+                其他篩選 5-2
+              </label>
+            </div>
+          </li>
+          <li>
+            <div
+              class="flex items-center rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                id="checkbox-item-5-3"
+                type="checkbox"
+                value=""
+                class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-neutral-950 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700"
+              />
+              <label
+                for="checkbox-item-5-3"
+                class="ms-2 w-full rounded text-base font-medium text-gray-900 dark:text-gray-300"
+              >
+                其他篩選 5-3
+              </label>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <!-- 其他篩選 6  -->
+    <li>
+      <!-- 其他篩選 5 Button -->
+      <button
+        id="dropdownBgHoverButton6"
+        data-dropdown-toggle="dropdownBgHover6"
+        class="dark:focus:ring-brand-60 inline-flex items-baseline rounded-full border border-neutral-300 px-4 py-1.5 text-center text-sm font-medium text-neutral-900 hover:border-brand-600 hover:bg-brand-50 hover:text-brand-700 focus:border-brand-600 focus:bg-brand-50 focus:text-brand-700 focus:outline-none active:border-brand-600 dark:bg-brand-400 dark:hover:bg-brand-500"
+        type="button"
+      >
+        其他篩選 6
+        <svg
+          class="ms-3 h-2.5 w-2.5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 10 6"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m1 1 4 4 4-4"
+          />
+        </svg>
+      </button>
+      <!-- 其他篩選 6 Dropdown menu -->
+      <div
+        id="dropdownBgHover6"
+        class="z-10 hidden w-48 rounded-lg bg-white shadow dark:bg-gray-700"
+      >
+        <ul
+          class="space-y-1 p-3 text-base text-gray-700 dark:text-gray-200"
+          aria-labelledby="dropdownBgHoverButton4"
+        >
+          <li>
+            <div
+              class="flex items-center rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                id="checkbox-item-6-1"
+                type="checkbox"
+                value=""
+                class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-neutral-950 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700"
+              />
+              <label
+                for="checkbox-item-6-1"
+                class="ms-2 w-full rounded text-base font-medium text-gray-900 dark:text-gray-300"
+              >
+                其他篩選 6-1
+              </label>
+            </div>
+          </li>
+          <li>
+            <div
+              class="flex items-center rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                checked
+                id="checkbox-item-6-2"
+                type="checkbox"
+                value=""
+                class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-neutral-950 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700"
+              />
+              <label
+                for="checkbox-item-6-2"
+                class="ms-2 w-full rounded text-base font-medium text-gray-900 dark:text-gray-300"
+              >
+                其他篩選 6-2
+              </label>
+            </div>
+          </li>
+          <li>
+            <div
+              class="flex items-center rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                id="checkbox-item-6-3"
+                type="checkbox"
+                value=""
+                class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-neutral-950 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700"
+              />
+              <label
+                for="checkbox-item-6-3"
+                class="ms-2 w-full rounded text-base font-medium text-gray-900 dark:text-gray-300"
+              >
+                其他篩選 6-3
+              </label>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+</div>    </nav>
+
+    <section>
+      <div
+        class="container relative h-[604px] w-full bg-[url('../assets/img/map01.jpg')] bg-cover bg-center"
+      >
+        <a
+          href="#"
+          class="group absolute top-[321px] inline-block transition-all"
+        >
+          <img src="data:image/svg+xml,%3csvg%20width='48'%20height='52'%20viewBox='0%200%2048%2052'%20fill='%23141515'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20filter='url(%23filter0_dd_13253_4192)'%3e%3cpath%20d='M24%202C14.0589%202%206%2010.0589%206%2020C6%2029.0307%2012.6504%2036.5081%2021.3209%2037.802L23.1019%2041.4398C23.4676%2042.1868%2024.5324%2042.1868%2024.8981%2041.4398L26.6791%2037.802C35.3496%2036.5081%2042%2029.0307%2042%2020C42%2010.0589%2033.9411%202%2024%202Z'%20fill='white'/%3e%3cpath%20d='M21.7699%2037.5821L21.6544%2037.3462L21.3946%2037.3074C12.9655%2036.0496%206.5%2028.7794%206.5%2020C6.5%2010.335%2014.335%202.5%2024%202.5C33.665%202.5%2041.5%2010.335%2041.5%2020C41.5%2028.7794%2035.0345%2036.0496%2026.6054%2037.3074L26.3456%2037.3462L26.2301%2037.5821L24.4491%2041.2199C24.2662%2041.5935%2023.7338%2041.5935%2023.5509%2041.2199L21.7699%2037.5821Z'%20stroke='%23444645'/%3e%3c/g%3e%3cdefs%3e%3cfilter%20id='filter0_dd_13253_4192'%20x='0'%20y='0'%20width='48'%20height='52'%20filterUnits='userSpaceOnUse'%20color-interpolation-filters='sRGB'%3e%3cfeFlood%20flood-opacity='0'%20result='BackgroundImageFix'/%3e%3cfeColorMatrix%20in='SourceAlpha'%20type='matrix'%20values='0%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%20127%200'%20result='hardAlpha'/%3e%3cfeMorphology%20radius='2'%20operator='erode'%20in='SourceAlpha'%20result='effect1_dropShadow_13253_4192'/%3e%3cfeOffset%20dy='2'/%3e%3cfeGaussianBlur%20stdDeviation='2'/%3e%3cfeComposite%20in2='hardAlpha'%20operator='out'/%3e%3cfeColorMatrix%20type='matrix'%20values='0%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200.06%200'/%3e%3cfeBlend%20mode='normal'%20in2='BackgroundImageFix'%20result='effect1_dropShadow_13253_4192'/%3e%3cfeColorMatrix%20in='SourceAlpha'%20type='matrix'%20values='0%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%20127%200'%20result='hardAlpha'/%3e%3cfeMorphology%20radius='2'%20operator='erode'%20in='SourceAlpha'%20result='effect2_dropShadow_13253_4192'/%3e%3cfeOffset%20dy='4'/%3e%3cfeGaussianBlur%20stdDeviation='4'/%3e%3cfeComposite%20in2='hardAlpha'%20operator='out'/%3e%3cfeColorMatrix%20type='matrix'%20values='0%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200.1%200'/%3e%3cfeBlend%20mode='normal'%20in2='effect1_dropShadow_13253_4192'%20result='effect2_dropShadow_13253_4192'/%3e%3cfeBlend%20mode='normal'%20in='SourceGraphic'%20in2='effect2_dropShadow_13253_4192'%20result='shape'/%3e%3c/filter%3e%3c/defs%3e%3c/svg%3e" alt="Pin" />
+          <img
+            src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='%23C9EF2C'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M5.83661%207.79712L9.85842%202.50744L8.75374%201.66602L4.53486%207.21555H1.67324V14.1638H5.83661V7.79712ZM4.44882%2012.7741H3.06103V8.60519H4.44882V12.7741ZM14.1634%2014.1638H18.3267V7.21555H15.4651L11.2462%201.66602L10.1415%202.50744L14.1634%207.79712V14.1638ZM15.5511%208.60519H16.9389V12.7741H15.5511V8.60519ZM18.3337%2017.3815C17.8063%2017.986%2017.0458%2018.3327%2016.245%2018.3327C15.4117%2018.3327%2014.6727%2017.9561%2014.1634%2017.3724C13.654%2017.9561%2012.915%2018.3327%2012.0817%2018.3327C11.2483%2018.3327%2010.5093%2017.9561%209.99998%2017.3724C9.49066%2017.9561%208.75097%2018.3327%207.91829%2018.3327C7.08562%2018.3327%206.34593%2017.9561%205.83661%2017.3724C5.32729%2017.9561%204.5876%2018.3327%203.75492%2018.3327C2.95486%2018.3327%202.19366%2017.986%201.66699%2017.3822L2.712%2016.4678C2.97568%2016.7707%203.35593%2016.9437%203.75492%2016.9437C4.52029%2016.9437%205.14271%2016.3205%205.14271%2015.5541H6.5305C6.5305%2016.3205%207.15293%2016.9437%207.91829%2016.9437C8.68366%2016.9437%209.30608%2016.3205%209.30608%2015.5541H10.6939C10.6939%2016.3205%2011.3163%2016.9437%2012.0817%2016.9437C12.847%2016.9437%2013.4695%2016.3205%2013.4695%2015.5541H14.8572C14.8572%2016.3205%2015.4797%2016.9437%2016.245%2016.9437C16.644%2016.9437%2017.0243%2016.7707%2017.2873%2016.4685L18.3337%2017.3815Z'%20fill='%23C9EF2C'/%3e%3c/svg%3e"
+            alt="RiverTracking"
+            class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[80%]"
+          />
+        </a>
+
+        <img src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M10.8643%203.29167C10.8643%202.83842%2010.9988%202.39535%2011.2509%202.01849C11.503%201.64162%2011.8613%201.34789%2012.2806%201.17444C12.6998%201.00099%2013.1611%200.95561%2013.6061%201.04403C14.0511%201.13246%2014.4599%201.35072%2014.7808%201.67121C15.1016%201.99171%2015.3201%202.40005%2015.4086%202.84459C15.4972%203.28913%2015.4517%203.7499%2015.2781%204.16865C15.1044%204.5874%2014.8104%204.94531%2014.4331%205.19712C14.0558%205.44893%2013.6123%205.58333%2013.1585%205.58333C12.55%205.58333%2011.9665%205.34189%2011.5363%204.91212C11.106%204.48235%2010.8643%203.89946%2010.8643%203.29167ZM20.2864%207.41667C20.4044%207.41667%2020.5%207.5123%2020.5%207.63026V22.7864C20.5%2022.9044%2020.4044%2023%2020.2864%2023H18.8782C18.7603%2023%2018.6646%2022.9044%2018.6646%2022.7864V12.2136C18.6646%2012.0956%2018.569%2012%2018.451%2012H15.4764C15.3955%2012%2015.3216%2011.9543%2015.2854%2011.882L14.7937%2010.8991C14.7025%2010.7168%2014.432%2010.7537%2014.393%2010.9538L13.8532%2013.7241C13.8242%2013.8728%2013.6541%2013.9449%2013.5271%2013.8623L12.2542%2013.0346C12.1812%2012.9872%2012.1444%2012.9001%2012.161%2012.8147L12.9823%208.60062C13.008%208.46874%2012.9077%208.34536%2012.7733%208.34441C12.4022%208.34179%2011.7289%208.33692%2011.4099%208.33461C11.3071%208.33387%2011.219%208.40645%2011.1993%208.50734L10.2733%2013.2577C10.2383%2013.437%2010.2578%2013.6228%2010.3293%2013.791C10.4007%2013.9593%2010.5209%2014.1023%2010.6743%2014.2018L14.8965%2016.9391C14.9572%2016.9785%2014.9939%2017.0459%2014.9939%2017.1183V22.7864C14.9939%2022.9044%2014.8983%2023%2014.7803%2023H13.3721C13.2541%2023%2013.1585%2022.9044%2013.1585%2022.7864V18.1138C13.1585%2018.0414%2013.1218%2017.974%2013.0611%2017.9346L9.67589%2015.74C9.47162%2015.6061%209.2863%2015.4459%209.12462%2015.2637C9.04804%2015.1774%208.91888%2015.1578%208.8206%2015.2182C8.33009%2015.5198%207.76222%2015.6762%207.18345%2015.6667C5.65184%2015.6667%204%2014.519%204%2012C4%208.91633%206.7861%206.5%2010.344%206.5H12.9419C13.4536%206.49815%2013.9556%206.63956%2014.391%206.90819C14.8263%207.17682%2015.1776%207.56193%2015.405%208.01983L16.4215%2010.0487C16.4577%2010.121%2016.5316%2010.1667%2016.6124%2010.1667H18.451C18.569%2010.1667%2018.6646%2010.071%2018.6646%209.95307V7.63026C18.6646%207.5123%2018.7603%207.41667%2018.8782%207.41667H20.2864ZM8.50768%2012.7159L9.28443%208.7335C9.3133%208.5855%209.18381%208.45535%209.03736%208.4913C7.30887%208.91567%205.83537%2010.1594%205.83537%2012C5.83537%2013.7417%206.95862%2013.8333%207.18345%2013.8333C7.49897%2013.8269%207.8027%2013.7124%208.04377%2013.509C8.28484%2013.3056%208.44862%2013.0256%208.50768%2012.7159ZM8.6802%2017.2773C8.60735%2017.2348%208.51794%2017.2655%208.50372%2017.3486L7.57947%2022.7504C7.55715%2022.8809%207.65765%2023%207.79001%2023H9.23291C9.33754%2023%209.42677%2022.9242%209.44369%2022.821L10.169%2018.395C10.1828%2018.3113%2010.1456%2018.2274%2010.0745%2018.1812L8.6802%2017.2773Z'%20fill='%23858B8A'/%3e%3c/svg%3e" alt="Hiking" />
+        <img src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M21.2721%202.732C21.0128%202.47015%2020.6983%202.26964%2020.3516%202.14517C20.0049%202.0207%2019.6348%201.97541%2019.2684%202.01263C17.3715%202.19728%2012.5777%203.01524%209.03034%206.56279C5.95891%209.64039%203.61438%2013.3667%202.16854%2017.4686L2.01377%2017.8577C1.98508%2017.9299%202.00204%2018.0122%202.05692%2018.0671L5.92986%2021.943C5.98449%2021.9976%206.06631%2022.0148%206.13829%2021.9866L6.52823%2021.8341C10.63%2020.3918%2014.3582%2018.0511%2017.4408%2014.983C20.9874%2011.4338%2021.803%206.63548%2021.9875%204.73721C22.0244%204.37079%2021.9793%204.00076%2021.8555%203.65393C21.7318%203.30711%2021.5325%202.99219%2021.2721%202.732ZM16.2628%2013.8016C13.5142%2016.5608%2010.1987%2018.6877%206.54696%2020.0352C6.47603%2020.0614%206.39639%2020.0437%206.34295%2019.9902L5.91255%2019.5595C5.83667%2019.4836%205.83667%2019.3605%205.91255%2019.2846L15.7773%209.41231C15.8532%209.33637%2015.8532%209.2133%2015.7773%209.13736L14.8718%208.23112C14.7958%208.15509%2014.6726%208.15509%2014.5966%208.23112L4.73226%2018.1029C4.65629%2018.179%204.53306%2018.179%204.45709%2018.1029L4.01467%2017.6602C3.96108%2017.6066%203.94349%2017.5266%203.97001%2017.4556C5.33122%2013.809%207.45934%2010.4971%2010.2108%207.74419C13.3767%204.57679%2017.713%203.84322%2019.4312%203.67528C19.5519%203.66416%2019.6737%203.67972%2019.7878%203.72087C19.9019%203.76201%2020.0056%203.82774%2020.0915%203.9134C20.1784%203.99868%2020.2451%204.10223%2020.287%204.21654C20.3289%204.33085%2020.3448%204.45305%2020.3337%204.57429C20.1617%206.29375%2019.4278%2010.6342%2016.2628%2013.8016Z'%20fill='%23858B8A'/%3e%3c/svg%3e" alt="Surfing" />
+        <img src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M7.23367%208.89934C7.292%208.80768%207.342%208.72435%207.40033%208.64101C7.467%208.54935%207.52533%208.46601%207.59199%208.38268C7.65033%208.29935%207.70866%208.22433%207.75866%208.15766C7.82532%208.08266%207.88366%208.016%207.93366%207.94933C8.08366%207.791%208.217%207.66602%208.317%207.60769L8.37533%207.57432L8.442%207.60769C8.542%207.66602%208.67532%207.791%208.82532%207.94933C8.87532%208.016%208.93367%208.08266%208.992%208.14932C9.05033%208.22432%209.10866%208.29935%209.16699%208.38268C9.23366%208.46601%209.30033%208.55769%209.35867%208.64935C9.417%208.72435%209.46699%208.80766%209.51699%208.88266C9.58366%208.99099%209.65866%209.10768%209.717%209.21601C9.74199%209.25768%209.76699%209.29936%209.79199%209.33269L9.95033%209.62434H11.117C13.3087%209.62434%2015.092%207.84099%2015.092%205.64932C15.092%203.45766%2013.3087%201.66602%2011.117%201.66602H5.642C3.45033%201.66602%201.66699%203.44932%201.66699%205.64932C1.66699%207.84932%203.45033%209.62434%205.642%209.62434H6.80866L6.96699%209.33269C6.96699%209.33269%207.01699%209.24934%207.04199%209.20767C7.10866%209.09934%207.167%208.99934%207.23367%208.89934ZM6.93366%207.02434C6.87533%207.09101%206.81699%207.16601%206.75866%207.23268C6.66699%207.33268%206.58367%207.43267%206.492%207.54101C6.45033%207.59934%206.417%207.64935%206.38366%207.70768C6.28366%207.84935%206.18366%207.98268%206.10033%208.12435C6.07533%208.16602%206.042%208.21599%206.00866%208.25766H5.642C4.20866%208.25766%203.03366%207.08266%203.03366%205.64932C3.03366%204.21599%204.20866%203.04099%205.642%203.04099H11.117C12.5503%203.04099%2013.717%204.20766%2013.717%205.64932C13.717%207.09099%2012.5503%208.25766%2011.117%208.25766H10.742C10.742%208.25766%2010.7003%208.191%2010.6753%208.15766C10.617%208.05766%2010.542%207.95768%2010.4753%207.85768C10.442%207.80768%2010.4087%207.74934%2010.3753%207.69934C10.3337%207.64101%2010.3003%207.59101%2010.267%207.54101C10.1503%207.39101%2010.0337%207.25767%209.90866%207.12434C9.87533%207.09101%209.85032%207.04934%209.81699%207.016C9.79199%206.991%209.77532%206.95769%209.75032%206.93269L9.70033%206.88269C9.70033%206.88269%209.66699%206.85765%209.65033%206.84098C9.55866%206.75765%209.47533%206.68268%209.38367%206.61602C9.37533%206.60768%209.36699%206.59933%209.35033%206.59099C9.34199%206.59099%209.33366%206.57435%209.32533%206.56602C9.23366%206.50769%209.15033%206.44934%209.05867%206.39934C9.042%206.39101%209.02532%206.38265%209.00866%206.37432C9.00032%206.37432%208.98366%206.36602%208.97533%206.35769C8.892%206.31602%208.80866%206.28269%208.72533%206.25769C8.70033%206.25769%208.68366%206.25768%208.65866%206.24935C8.65032%206.24935%208.64199%206.24935%208.63366%206.24935C8.55033%206.23268%208.46699%206.20769%208.37533%206.20769C8.29199%206.20769%208.20866%206.23268%208.12533%206.24935C8.12533%206.24935%208.117%206.24935%208.10867%206.24935C8.08367%206.24935%208.05866%206.24931%208.03366%206.26598C7.95033%206.29098%207.86699%206.32431%207.78366%206.36598C7.75032%206.38264%207.72533%206.39102%207.692%206.40768C7.60867%206.45768%207.51699%206.51598%207.43366%206.57431C7.41699%206.59098%207.40033%206.59935%207.37533%206.61602C7.37533%206.61602%207.37532%206.61603%207.36699%206.62436C7.27532%206.69103%207.18366%206.77433%207.10033%206.85767C7.08366%206.866%207.07533%206.88265%207.067%206.89098C7.042%206.90765%207.02533%206.92431%207.00866%206.94098C6.98366%206.96598%206.95866%206.99935%206.93366%207.03268V7.02434Z'%20fill='%23141515'/%3e%3cpath%20d='M7.8173%2011.241V12.8243C7.8173%2015.5826%2010.0673%2017.8327%2012.8256%2017.8327C15.584%2017.8327%2017.8256%2015.5826%2017.8256%2012.8243V1.66602H16.709V12.8243C16.709%2014.966%2014.9673%2016.716%2012.8256%2016.716C10.684%2016.716%208.93396%2014.966%208.93396%2012.8243V11.241H7.8173Z'%20fill='%23141515'/%3e%3c/svg%3e" alt="Diving" />
+        <i class="bx bx-cycling"></i>
+        <i class="bx bx-swim"></i>
+      </div>
+    </section>
+
+    <section class="fixed bottom-0 left-1/2 -translate-x-1/2">
+      <div class="container mb-5 flex">
+        <div
+          class="container absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-[rgba(161,224,15,0.4)] to-[rgba(161,224,15,0.4)]"
+        ></div>
+        <div class="mySwiper relative w-[140px] overflow-hidden rounded-s-2xl">
+          <ul class="swiper-wrapper">
+            <li class="swiper-slide">
+              <img src="/uniGuide/assets/homepage01-BhoahxDx.jpg" alt="homepage" />
+            </li>
+            <li class="swiper-slide">
+              <img src="/uniGuide/assets/homepage01-BhoahxDx.jpg" alt="homepage" />
+            </li>
+            <li class="swiper-slide">
+              <img src="/uniGuide/assets/homepage01-BhoahxDx.jpg" alt="homepage" />
+            </li>
+            <li class="swiper-slide">
+              <img src="/uniGuide/assets/homepage01-BhoahxDx.jpg" alt="homepage" />
+            </li>
+            <li class="swiper-slide">
+              <img src="/uniGuide/assets/homepage01-BhoahxDx.jpg" alt="homepage" />
+            </li>
+            <li class="swiper-slide">
+              <img src="/uniGuide/assets/homepage01-BhoahxDx.jpg" alt="homepage" />
+            </li>
+          </ul>
+          <!-- SwiperPagination -->
+          <div class="swiper-pagination -mb-2"></div>
+        </div>
+        <div class="w-[187px] rounded-e-2xl bg-white p-2">
+          <div class="flex items-center gap-x-1 text-sm">
+            <i class="bx bxs-star mb-[0.4px] leading-4"></i>
+            <span class="font-semibold">4.9</span>
+            <span class="text-neutral-400">(145)</span>
+          </div>
+          <p class="font-semibold">The Secret Stream Trekking Experience</p>
+          <div class="flex gap-x-1 text-xs">
+            <p class="font-semibold">$1,050 TWD</p>
+            <p>/ person</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container space-y-4 rounded-t-2xl bg-white pb-[38px] pt-4">
+        <span
+          class="mx-auto block h-1 w-8 max-w-none rounded-full bg-neutral-200"
+        ></span>
+        <div class="flex items-center justify-center gap-x-2">
+          <a
+            href="#"
+            class="text-brand-30 rounded-lg bg-brand-200 px-2 text-xs font-semibold leading-5"
+          >
+            300
+          </a>
+          <p class="text-sm">Experiences</p>
+        </div>
+      </div>
+    </section>
+
+  </body>
+</html>
