@@ -4,8 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>page 4</title>
-    <!-- tailwind： 沒先載入的話，drawer 在頁面載入時，會閃爍一下 -->
-    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
     <div class="fixed start-0 top-0 z-20 w-full bg-white">
@@ -27,7 +25,7 @@
             <input
               type="search"
               id="default-search"
-              class="block w-full rounded-full border border-0 p-3.5 ps-14 text-sm font-semibold text-gray-900 shadow-xs focus:border-neutral-950 focus:ring-neutral-950 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              class="block w-full rounded-full border border-0 p-3.5 ps-14 text-sm font-semibold text-gray-900 shadow-xs focus:border-neutral-950 focus:ring-neutral-950"
               value="Taiwan"
               placeholder=""
               required
@@ -36,7 +34,7 @@
         </form>
       </nav>
       <!-- tabs  -->
-      <div class="mb-2 border-b border-gray-200 dark:border-gray-700">
+      <div class="mb-2 border-b border-gray-200">
         <div class="container">
           <ul
             class="-mb-px flex flex-wrap text-center text-base font-semibold"
@@ -708,11 +706,11 @@
     </div>
     <!-- footer  -->
     <footer
-      class="fixed bottom-0 left-0 z-20 w-full border-t border-gray-200 bg-white px-2 shadow dark:border-gray-600 dark:bg-gray-800"
+      class="fixed bottom-0 left-0 z-20 w-full border-t border-gray-200 bg-white px-2 shadow"
     >
       <div class="container relative py-1">
         <ul
-          class="flex flex-wrap items-center justify-between text-xxs font-medium text-neutral-300 dark:text-gray-400 sm:mt-0"
+          class="flex flex-wrap items-center justify-between text-xxs font-medium text-neutral-300 sm:mt-0"
         >
           <li class="text-center">
             <a href="#" class="active block p-2 text-neutral-950">
